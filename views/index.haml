@@ -1,92 +1,26 @@
-%h1
-  Web Remote control
+%html
+  %head
+    %title Web volume control
+    %link{rel: "stylesheet", href: "style.css", type: "text/css"}
+    <meta charset="UTF-8">
 
-%p
-  Menu:
-  %ul
-    %li
-      %a{id: "up", href:"#"}
-        +
-    %li
-      %a{id: "down", href: "#"}
-        \-
-    %li
-      %a{id: "mute", href: "#"}
-        ((D
-#volume
-#state
-  
-:javascript
-  function loadXMLDoc(command){
-    var xmlhttp;
+  %body
+    %h1
+      Web volume control
 
-    if(window.XMLHttpRequest){
-      xmlhttp = new XMLHttpRequest();
-    }
+      %p
+        Menu:
+        %ul
+          %li
+            %a{id: "up", href:"#"}
+              +
+          %li
+            %a{id: "down", href: "#"}
+              \-
+          %li
+            %a{id: "mute", href: "#"}
+              ((D
 
-    xmlhttp.onreadystatechange = function(){
-      if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
-        setVolume( JSON.parse(xmlhttp.responseText) );
-      }
-    }
-
-    xmlhttp.open("GET", "/" + command, true);
-    xmlhttp.send();
-  }
-
-  function setVolume(data){
-          document.getElementById("volume").innerHTML = data.number;
-          document.getElementById("state").innerHTML = data.state;
-  }
-
-  document.getElementById("up").addEventListener("click", up);
-  document.getElementById("down").addEventListener("click", down);
-  document.getElementById("mute").addEventListener("click", mute);
-  
-  function up(){
-    loadXMLDoc("volup");
-    return false;
-  }
-
-  function down(){
-    loadXMLDoc("voldown");
-    return false;
-  }
-
-  function mute(){
-    loadXMLDoc("mute");
-    return false;
-  }
-
-:css
-  body{
-  font-size: 4em;
-  }
-
-  a{
-  text-decoration: none;
-  font-weight: bold;
-  }
-
-  ul{
-  list-style: none;
-  }
-  ul li{
-
-  margin: 3em;
-  }
-
-    ul li a{
-  padding: 1em;
-  background: #ddd;
-  margin: 2em;
-  }
-
-  ul li a:hover{
-  background: #ff0;
-  }
-
-  #volume{
-  font-family: Courier;
-  font-size: 1em;
-  }
+        #volume
+        #state
+    %script{type: "text/javascript", src: "app.js"}

@@ -1,0 +1,31 @@
+body{
+    font-size: 4em;
+}
+
+a{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+ul{
+    list-style: none;
+}
+ul li{
+
+    margin: 3em;
+}
+
+ul li a{
+    padding: 1em;
+    background: #ddd;
+    margin: 2em;
+}
+
+ul li a:hover{
+    background: #ff0;
+}
+
+#volume{
+    font-family: Courier;
+    font-size: 1em;
+}
