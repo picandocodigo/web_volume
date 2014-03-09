@@ -23,6 +23,10 @@ get '/mute' do
   get_vol
 end
 
+get '/vol' do
+  get_vol
+end
+
 def get_vol
   vol = `amixer get Master | grep "\[[0-9]*%\]\ \[o[n|f]"`
   number = vol.match(/([0-9]+)%/)[1]

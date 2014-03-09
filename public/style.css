@@ -1,5 +1,13 @@
 body{
-    font-size: 4em;
+    font-size: 2em;
+    background-color: #3c3a40;
+    color: #fff;
+}
+
+.container{
+    width: 70%;
+    margin: auto;
+    text-align: center;
 }
 
 a{
@@ -9,23 +17,59 @@ a{
 
 ul{
     list-style: none;
-}
-ul li{
-
-    margin: 3em;
+    margin: none;
+    padding: none;
 }
 
-ul li a{
-    padding: 1em;
+button{
     background: #ddd;
-    margin: 2em;
+    font-size: 3em;
+    width: 300px;
+    height: 20%;
 }
 
-ul li a:hover{
+#up{
+    border-radius: 50px 50px 0 0;
+}
+
+#down{
+    border-radius: 0 0 50px 50px;
+}
+
+#mute{
+    border-radius: 50px;
+}
+
+button:hover{
     background: #ff0;
 }
 
 #volume{
     font-family: Courier;
     font-size: 1em;
+}
+
+@media (max-width: 700px) {
+    h1{
+        font-size: 1em;
+    }
+    button{
+        font-size: 2em;
+        height: 30%;
+    }
+    .container{
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px){
+    h1{
+        font-size: 0.5em;
+    }
+    button{
+        font-size: 1em;
+        width: 200px;
+        height: 150px;
+    }
+    
 }

@@ -17,7 +17,7 @@ function loadXMLDoc(command){
 
 function setVolume(data){
   document.getElementById("volume").innerHTML = data.number;
-  document.getElementById("state").innerHTML = data.state;
+  document.getElementById("state").innerHTML = (data.state == "off") ? "muted" : "unmuted";
 }
 
 document.getElementById("up").addEventListener("click", up);
@@ -38,3 +38,7 @@ function mute(){
   loadXMLDoc("mute");
   return false;
 }
+
+window.setInterval(function(){
+  loadXMLDoc("vol");
+}, 500);
