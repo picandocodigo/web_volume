@@ -10,4 +10,24 @@ volume via a web-browser.
 ## How does it work?
 
 Clone the code, `bundle install` and `rackup`. You should be able to
-access the app on: http://localhost:9292.
+access the app on: [http://localhost:9292](http://localhost:9292)
+
+You can manage the volume from a Browser or something else that can do a
+GET request.
+
+### Routes
+
+ * `volup` - increases volume by 3%.
+ * `voldown` - decreases volume by 3%.
+ * `mute` - toggles mute/unmute.
+ * `vol` - returns current volume and state.
+
+All routes return a JSON with two keys: "number" and "state". The
+"number" value is the current volume value and the "state" represents
+if the system volume is muted or not.
+
+Example:
+```
+$ curl localhost:9292/mute
+{"number":"100","state":"off"}
+```
