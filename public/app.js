@@ -1,4 +1,4 @@
-function loadXMLDoc(command){
+function getAjax(command){
   var xmlhttp;
 
   if(window.XMLHttpRequest){
@@ -9,7 +9,7 @@ function loadXMLDoc(command){
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
       setVolume( JSON.parse(xmlhttp.responseText) );
     }
-  }
+  };
 
   xmlhttp.open("GET", "/" + command, true);
   xmlhttp.send();
@@ -25,20 +25,20 @@ document.getElementById("down").addEventListener("click", down);
 document.getElementById("mute").addEventListener("click", mute);
 
 function up(){
-  loadXMLDoc("volup");
+  getAjax("volup");
   return false;
 }
 
 function down(){
-  loadXMLDoc("voldown");
+  getAjax("voldown");
   return false;
 }
 
 function mute(){
-  loadXMLDoc("mute");
+  getAjax("mute");
   return false;
 }
 
 window.setInterval(function(){
-  loadXMLDoc("vol");
+  getAjax("vol");
 }, 500);
