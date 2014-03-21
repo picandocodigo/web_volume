@@ -18,6 +18,7 @@ function getAjax(command){
 function setVolume(data){
   document.getElementById("volume").innerHTML = data.number;
   document.getElementById("state").innerHTML = (data.state == "off") ? "muted" : "unmuted";
+  document.getElementById("mute").innerHTML = (data.state == "off") ? "&#128263;" : " &#128266;";
 }
 
 document.getElementById("up").addEventListener("click", up);
