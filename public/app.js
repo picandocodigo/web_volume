@@ -16,14 +16,23 @@ function getAjax(command){
 }
 
 function setVolume(data){
-  document.getElementById("volume").innerHTML = data.number;
-  document.getElementById("state").innerHTML = (data.state == "off") ? "muted" : "unmuted";
-  document.getElementById("mute").innerHTML = (data.state == "off") ? "&#128263;" : " &#128266;";
+  if (data.state == "off"){
+      document.getElementById('mute').innerHTML = '&#128263;';
+  }else{
+    var volume = parseInt(data.number);
+    switch (true){
+    case volume === 0:
+      document.getElementById('mute').innerHTML = '&#128264;';
+      break;
+    case volume > 0 && volume < 50:
+      document.getElementById('mute').innerHTML = '&#128265;';
+      break;
+    case volume > 50:
+      document.getElementById('mute').innerHTML = '&#128266;';
+    }
+  }
+  document.getElementById('volume').innerHTML = data.number;
 }
-
-document.getElementById("up").addEventListener("click", up);
-document.getElementById("down").addEventListener("click", down);
-document.getElementById("mute").addEventListener("click", mute);
 
 function up(){
   getAjax("volup");
@@ -43,3 +52,7 @@ function mute(){
 window.setInterval(function(){
   getAjax("vol");
 }, 500);
+
+document.getElementById("up").addEventListener("click", up);
+document.getElementById("down").addEventListener("click", down);
+document.getElementById("mute").addEventListener("click", mute);
