@@ -43,11 +43,9 @@ module Volume
       number = vol.match(/output\ volume\:([0-9]+)/)[1]
       state = vol.match(/muted:([t|f])/)[1]
     end
-    {
-      number: number.to_s,
-      state: state.to_s
-    }.to_json
+    { number: number.to_s, state: state.to_s }.to_json
   end
+
   private
 
   def self.osa(script)

@@ -14,7 +14,7 @@ end
 # see 'get_vol'
 get '/:route' do
   Volume.send(params[:route].to_sym)
-  get_vol
+  volume
 end
 
 # Returns a JSON value with the volume
@@ -22,6 +22,6 @@ end
 # A JSON value with two keys: "number" and "state". The "number" value
 # is the current volume value and the "state" represents if the system
 # volume is muted or not. Example: `{"number":"50","state":"off"}
-def get_vol
+def volume
   Volume.vol
 end
