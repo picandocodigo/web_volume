@@ -1,11 +1,11 @@
 # Web Volume "remote" control
 
-This simple Sinatra app manages the volume on systems with
-[ALSA](http://www.alsa-project.org/main/index.php/Main_Page)
-(most GNU/Linux distributions as far as I know).
+This simple Sinatra app manages the volume on **GNU/Linux** systems with
+[ALSA](http://www.alsa-project.org/main/index.php/Main_Page) (most
+GNU/Linux distributions as far as I know) and **Mac OS X** (thanks to @dcadenas).
 
 It's basically a web page where you can interact with your computer's
-volume via a web-browser.
+volume via a browser.
 
 ## How does it work?
 
