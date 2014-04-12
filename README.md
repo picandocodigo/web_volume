@@ -1,4 +1,4 @@
-# Web Volume "remote" control
+# Web Volume "remote" control 🔊
 
 This simple Sinatra app manages the volume on **GNU/Linux** systems with
 [ALSA](http://www.alsa-project.org/main/index.php/Main_Page) (most
@@ -9,8 +9,12 @@ volume via a browser.
 
 ## How does it work?
 
-Clone the code, `bundle install` and `rackup`. You should be able to
-access the app on: [http://localhost:9292](http://localhost:9292)
+* Clone the code
+* `bundle install`
+* `bundle exec puma`
+
+You should be able to access the app on:
+[http://localhost:9292](http://localhost:9292)
 
 You can manage the volume from a Browser or something else that can do a
 GET request.

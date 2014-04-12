@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'sinatra'
 require 'haml'
 require './lib/volume'
@@ -13,7 +14,11 @@ end
 # == Returns:
 # see 'get_vol'
 get '/:route' do
-  Volume.send(params[:route].to_sym)
+  if RUBY_PLATFORM =~ /linux/
+    Volume::LinuxVolume.send(params[:route].to_sym)
+  elsif RUBY_PLATFORM =~ /darwin|macos/
+    Volume::MacVolume.send(params[:route].to_sym)
+  end
   volume
 end
 
@@ -23,5 +28,9 @@ end
 # is the current volume value and the "state" represents if the system
 # volume is muted or not. Example: `{"number":"50","state":"off"}
 def volume
-  Volume.vol
+  if RUBY_PLATFORM =~ /linux/
+    Volume::LinuxVolume.vol
+  elsif RUBY_PLATFORM =~ /darwin|macos/
+    Volume::MacVolume.vol
+  end
 end
