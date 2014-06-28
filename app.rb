@@ -1,25 +1,24 @@
 # -*- coding: utf-8 -*-
 require 'sinatra'
 require 'haml'
-require './lib/volume'
+require 'volumerb'
+require 'json'
 
 get '/' do
   haml :index
 end
 
 # Available routes:
-#   volup   - Increases volume by 3%
-#   voldown - Decreases volume by 3%
+#   up   - Increases volume by 3%
+#   down - Decreases volume by 3%
 #   mute    - Toggles mute/unmute
 # == Returns:
 # see 'get_vol'
 get '/:route' do
-  if RUBY_PLATFORM =~ /linux/
-    Volume::LinuxVolume.send(params[:route].to_sym)
-  elsif RUBY_PLATFORM =~ /darwin|macos/
-    Volume::MacVolume.send(params[:route].to_sym)
+  fork do
+    Volumerb.send(params[:route].to_sym)
   end
-  volume
+  Volumerb.vol.to_json
 end
 
 # Returns a JSON value with the volume
@@ -29,8 +28,8 @@ end
 # volume is muted or not. Example: `{"number":"50","state":"off"}
 def volume
   if RUBY_PLATFORM =~ /linux/
-    Volume::LinuxVolume.vol
+    Volumerb::LinuxVolume.vol
   elsif RUBY_PLATFORM =~ /darwin|macos/
-    Volume::MacVolume.vol
+    Volumerb::MacVolume.vol
   end
 end

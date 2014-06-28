@@ -1,3 +1,27 @@
+document.getElementById("up").addEventListener("click", up);
+document.getElementById("down").addEventListener("click", down);
+document.getElementById("mute").addEventListener("click", mute);
+
+function up(){
+  getAjax("up");
+  return false;
+}
+
+function down(){
+  getAjax("down");
+  return false;
+}
+
+function mute(){
+  getAjax("mute");
+  return false;
+}
+
+window.setInterval(function(){
+  getAjax("vol");
+}, 1000);
+
+// Dear old Ajax Request
 function getAjax(command){
   var xmlhttp;
 
@@ -17,9 +41,9 @@ function getAjax(command){
 
 function setVolume(data){
   if (data.state == "off"){
-      document.getElementById('mute').innerHTML = '&#128263;';
+    document.getElementById('mute').innerHTML = '&#128263;';
   }else{
-    var volume = parseInt(data.number);
+    var volume = data.value;
     switch (true){
     case volume === 0:
       document.getElementById('mute').innerHTML = '&#128264;';
@@ -31,28 +55,5 @@ function setVolume(data){
       document.getElementById('mute').innerHTML = '&#128266;';
     }
   }
-  document.getElementById('volume').innerHTML = data.number;
+  document.getElementById('volume').innerHTML = data.value;
 }
-
-function up(){
-  getAjax("volup");
-  return false;
-}
-
-function down(){
-  getAjax("voldown");
-  return false;
-}
-
-function mute(){
-  getAjax("mute");
-  return false;
-}
-
-window.setInterval(function(){
-  getAjax("vol");
-}, 500);
-
-document.getElementById("up").addEventListener("click", up);
-document.getElementById("down").addEventListener("click", down);
-document.getElementById("mute").addEventListener("click", mute);
