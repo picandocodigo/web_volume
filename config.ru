@@ -1,2 +1,3 @@
-require './app'
-run Sinatra::Application
+require './volume_api'
+
+run(Cuba)

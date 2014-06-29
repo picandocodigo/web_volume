@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'sinatra'
+gem 'cuba'
 gem 'haml'
 gem 'puma'
 gem 'volumerb'

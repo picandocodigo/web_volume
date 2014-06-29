@@ -41,6 +41,7 @@ function getAjax(command){
 
 function setVolume(data){
   if (data.state == "off"){
+    // Muted speaker:
     document.getElementById('mute').innerHTML = '&#128263;';
   }else{
     var volume = data.value;
@@ -51,7 +52,7 @@ function setVolume(data){
     case volume > 0 && volume < 50:
       document.getElementById('mute').innerHTML = '&#128265;';
       break;
-    case volume > 50:
+    case volume >= 50:
       document.getElementById('mute').innerHTML = '&#128266;';
     }
   }
